@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Spotify</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, rgba(20,20,20,0.9), rgba(50,0,80,0.8)), url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4') center/cover no-repeat;
+      backdrop-filter: blur(10px);
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    .container { width: 90%; margin: auto; padding-top: 40px; }
+    h1 { text-align: center; margin-bottom: 30px; }
+    .card { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 20px; margin-bottom: 20px; backdrop-filter: blur(20px); }
+    input, button { width: 100%; padding: 14px; margin-top: 10px; border-radius: 8px; border: none; }
+    button { background: #1db954; color: black; font-weight: bold; cursor: pointer; }
+    .artist-item, .song-item { padding: 12px; background: rgba(255,255,255,0.15); margin: 10px 0; border-radius: 10px; cursor: pointer; display: flex; justify-content: space-between; }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN PAGE -->
+  <div class="container" id="loginPage">
+    <h1>Login</h1>
+    <div class="card">
+      <label>Username</label>
+      <input type="text" placeholder="Enter Username" />
+      <label>Password</label>
+      <input type="password" placeholder="Enter Password" />
+      <button onclick="goOTP()">Login</button>
+    </div>
+  </div>
+
+  <!-- OTP PAGE -->
+  <div class="container" id="otpPage" style="display:none;">
+    <h1>OTP Verification</h1>
+    <div class="card">
+      <p>OTP Server Not Working 😅</p>
+      <p>Please type <b>2105</b></p>
+      <input id="otpVal" type="text" placeholder="Enter OTP" />
+      <button onclick="checkOTP()">Verify</button>
+    </div>
+  </div>
+
+  <!-- ARTIST SELECT PAGE -->
+  <div class="container" id="artistPage" style="display:none;">
+    <h1>Artists</h1>
+    <div class="card">
+      <div class="artist-item" onclick="openArtist('talvinder')">Talvinder →</div>
+      <div class="artist-item" onclick="openArtist('honey')">Yo Yo Honey Singh →</div>
+      <div class="artist-item" onclick="openArtist('arijit')">Arijit Singh →</div>
+    </div>
+  </div>
+
+  <!-- SONG PAGE DYNAMIC -->
+  <div class="container" id="songsPage" style="display:none;">
+    <h1 id="artistName"></h1>
+    <div class="card" id="songList"></div>
+    <button onclick="backToArtists()">Back</button>
+  </div>
+
+<script>
+function goOTP(){
+  loginPage.style.display='none';
+  otpPage.style.display='block';
+}
+
+function checkOTP(){
+  if(document.getElementById('otpVal').value==='2105'){
+    otpPage.style.display='none';
+    artistPage.style.display='block';
+  } else alert('Wrong OTP');
+}
+
+function backToArtists(){ songsPage.style.display='none'; artistPage.style.display='block'; }
+
+function openArtist(name){
+  artistPage.style.display='none';
+  songsPage.style.display='block';
+  let title=document.getElementById("artistName");
+  let list=document.getElementById("songList");
+  list.innerHTML="";
+
+  if(name==='talvinder'){
+    title.innerText='Talvinder Songs';
+    list.innerHTML+=song('Nasha');
+    list.innerHTML+=song('Raataan');
+    list.innerHTML+=song('9:45');
+  }
+  if(name==='honey'){
+    title.innerText='Yo Yo Honey Singh Songs';
+    list.innerHTML+=song('Blue Eyes');
+    list.innerHTML+=song('Desi Kalakar');
+    list.innerHTML+=song('Love Dose');
+  }
+  if(name==='arijit'){
+    title.innerText='Arijit Singh Songs';
+    list.innerHTML+=song('Kesariya');
+    list.innerHTML+=song('Tum Hi Ho');
+    list.innerHTML+=song('Apna Bana Le');
+  }
+}
+
+function song(name){ return `<div class='song-item'><span>${name}</span><button>Play</button></div>` }
+</script>
+
+</body>
+</
