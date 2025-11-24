@@ -1,15 +1,30 @@
-🚀 Features
+# 🎧 Mini Spotify – Music Web App
 
-🎵 Play / Pause music
+A clean and modern mini-Spotify style web app with login, OTP verification, and dynamic song listings. Built with HTML, CSS, and JavaScript.
 
-⏭️ Next & Previous track controls
+---
 
-🖼️ Dynamic cover image updates
+## 🚀 Features
 
-📂 Preloaded playlist support
+- 🔐 **Login / OTP Verification**  
+- 👤 **Artist Selection** (e.g., Arijit, Honey Singh, Talvinder)  
+- 🎵 **Music Playback**: Play, pause, next/previous  
+- 🖼️ **Dynamic Song Cover Art**  
+- 📂 **Playlist Management**  
+- 📊 **Seekbar & Progress Tracking**  
+- 🔊 **Volume Control**  
+- 📱 **Responsive Glass-Style UI**
 
-📊 Seekbar progress tracking
+---
 
-🔊 Volume control slider
+## 🛠️ Tech Stack
 
-📱 Fully responsive UI for all devices
+- **HTML5** — Structure  
+- **CSS3** — Styling & glass UI  
+- **JavaScript** — Player logic, OTP, song switching  
+
+---
+
+## 📂 Project Structure
+
+
